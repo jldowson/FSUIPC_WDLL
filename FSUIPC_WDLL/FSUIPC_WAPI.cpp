@@ -1,6 +1,4 @@
-#include "pch.h"
 #include "FSUIPC_WAPI.h"
-#include "WASMIF.h"
 
 WASMIF* wasmPtr = nullptr;
 

@@ -1,9 +1,7 @@
 #pragma once
-#include "pch.h"
-#include "WASM.h"
+#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#include <windows.h>
 #include "WASMIF.h"
-#include <map>
-#include <unordered_map>
 
 #ifdef FSUIPC_WAPI_EXPORTS
 #define FSUIPC_WAPI_API __declspec(dllexport)
