@@ -1,6 +1,7 @@
 #include "FSUIPC_WAPI.h"
+#include "WASMIF.h"
 
-WASMIF* wasmPtr = nullptr;
+extern "C" FSUIPC_WAPI_API WASMIF* wasmPtr = nullptr;
 
 
 void fsuipcw_init(HWND hWnd, int startEventNo, void (*loggerFunction)(const char* logString)) {
@@ -53,9 +54,9 @@ int fsuipcw_getLvarUpdateFrequency() {
 	return -1;
 }
 
-void fsuipcw_setLogLevel(LOGLEVEL logLevel) {
+void fsuipcw_setLogLevel(int logLevel) {
 	if (wasmPtr) {
-		wasmPtr->setLogLevel(logLevel);
+		wasmPtr->setLogLevel((LOGLEVEL)logLevel);
 	}
 }
 
@@ -115,21 +116,33 @@ void fsuipcw_logHvars() {
 	}
 }
 
-void fsuipcw_getLvarValues(map<string, double >& returnMap) {
+void fsuipcw_getLvarValues(void (*receiveFunction)(const char*, double)) {
 	if (wasmPtr) {
-		wasmPtr->getLvarValues(returnMap);
+		map<string, double > result;
+		wasmPtr->getLvarValues(result);
+		for (map<string, double>::iterator it = result.begin(); it != result.end(); it++) {
+			receiveFunction(it->first.c_str(), it->second);
+		}
 	}
 }
 
-void fsuipcw_getLvarList(unordered_map<int, string >& returnMap) {
+void fsuipcw_getLvarList(void (*receiveFunction)(int, const char*)) {
 	if (wasmPtr) {
-		wasmPtr->getLvarList(returnMap);
+		unordered_map<int, string> result;
+		wasmPtr->getLvarList(result);
+		for (unordered_map<int, string>::iterator it = result.begin(); it != result.end(); it++) {
+			receiveFunction(it->first, it->second.c_str());
+		}
 	}
 }
 
-void fsuipcw_getHvarList(unordered_map<int, string >& returnMap) {
+void fsuipcw_getHvarList(void (*receiveFunction)(int, const char*)) {
 	if (wasmPtr) {
-		wasmPtr->getHvarList(returnMap);
+		unordered_map<int, string> result;
+		wasmPtr->getHvarList(result);
+		for (unordered_map<int, string>::iterator it = result.begin(); it != result.end(); it++) {
+			receiveFunction(it->first, it->second.c_str());
+		}
 	}
 }
 

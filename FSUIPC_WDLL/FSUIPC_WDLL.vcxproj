@@ -173,7 +173,6 @@
     <ClInclude Include="FSUIPC_WAPI\include\WASMIF.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="FSUIPC_WAPI.cpp" />
   </ItemGroup>
   <ItemGroup>
