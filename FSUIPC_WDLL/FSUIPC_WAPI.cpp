@@ -170,3 +170,13 @@ bool fsuipcw_createLvar(const char* lvarName, DWORD value) {
 	}
 	return FALSE;
 }
+
+void CALLBACK fsuipcw_MyDispatchProc(SIMCONNECT_RECV* pData, DWORD cbData, void* pContext) {
+	wasmPtr->MyDispatchProc(pData, cbData, pContext);
+}
+VOID CALLBACK fsuipcw_StaticConfigTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+	wasmPtr->StaticConfigTimer(hWnd, uMsg, idEvent, dwTime);
+}
+VOID CALLBACK fsuipcw_StaticRequestDataTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+	wasmPtr->StaticRequestDataTimer(hWnd, uMsg, idEvent, dwTime);
+}

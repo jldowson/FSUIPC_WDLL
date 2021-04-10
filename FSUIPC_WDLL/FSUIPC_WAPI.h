@@ -1,6 +1,7 @@
 #pragma once
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 #include <windows.h>
+#include <SimConnect.h>
 
 #ifdef FSUIPC_WAPI_EXPORTS
 #define FSUIPC_WAPI_API __declspec(dllexport)
@@ -33,3 +34,7 @@ extern "C" FSUIPC_WAPI_API void fsuipcw_executeCalclatorCode(const char* code);
 extern "C" FSUIPC_WAPI_API int fsuipcw_getLvarIdFromName(const char* lvarName);
 extern "C" FSUIPC_WAPI_API void fsuipcw_getLvarNameFromId(int id, char* name);
 extern "C" FSUIPC_WAPI_API bool fsuipcw_createLvar(const char* lvarName, DWORD value);
+
+extern "C" FSUIPC_WAPI_API  void CALLBACK fsuipcw_MyDispatchProc(SIMCONNECT_RECV* pData, DWORD cbData, void* pContext);
+extern "C" FSUIPC_WAPI_API  VOID CALLBACK fsuipcw_StaticConfigTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
+extern "C" FSUIPC_WAPI_API  VOID CALLBACK fsuipcw_StaticRequestDataTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
