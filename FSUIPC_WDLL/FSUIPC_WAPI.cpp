@@ -1,7 +1,7 @@
 #include "FSUIPC_WAPI.h"
 #include "WASMIF.h"
 
-extern "C" FSUIPC_WAPI_API WASMIF* wasmPtr = nullptr;
+WASMIF* wasmPtr = nullptr;
 
 
 void fsuipcw_init(HWND hWnd, int startEventNo, void (*loggerFunction)(const char* logString)) {
