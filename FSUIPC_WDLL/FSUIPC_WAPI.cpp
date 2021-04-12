@@ -154,7 +154,7 @@ void fsuipcw_executeCalclatorCode(const char* code) {
 
 int fsuipcw_getLvarIdFromName(const char* lvarName) {
 	if (wasmPtr) {
-		wasmPtr->getLvarIdFromName(lvarName);
+		return wasmPtr->getLvarIdFromName(lvarName);
 	}
 }
 
