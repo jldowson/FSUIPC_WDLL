@@ -146,6 +146,13 @@ void fsuipcw_getHvarList(void (*receiveFunction)(int, const char*)) {
 	}
 }
 
+bool fsuipcw_isRunning() {
+	if (wasmPtr) {
+		return wasmPtr->isRunning();
+	}
+	return FALSE;
+}
+
 void fsuipcw_executeCalclatorCode(const char* code) {
 	if (wasmPtr) {
 		wasmPtr->executeCalclatorCode(code);
@@ -179,4 +186,30 @@ VOID CALLBACK fsuipcw_StaticConfigTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, 
 }
 VOID CALLBACK fsuipcw_StaticRequestDataTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
 	wasmPtr->StaticRequestDataTimer(hWnd, uMsg, idEvent, dwTime);
+}
+
+void fsuipcw_registerUpdateCallback(void (*callbackFunction)(void)) {
+	if (wasmPtr) {
+		wasmPtr->registerUpdateCallback(callbackFunction);
+	}
+}
+void fsuipcw_registerLvarUpdateCallbackById(void (*callbackFunction)(int id[], double newValue[])) {
+	if (wasmPtr) {
+		wasmPtr->registerLvarUpdateCallback(callbackFunction);
+	}
+}
+void fsuipcw_registerLvarUpdateCallbackByName(void (*callbackFunction)(const char* lvarName[], double newValue[])) {
+	if (wasmPtr) {
+		wasmPtr->registerLvarUpdateCallback(callbackFunction);
+	}
+}
+void fsuipcw_flagLvarForUpdateCallbackById(int lvarId) {
+	if (wasmPtr) {
+		wasmPtr->flagLvarForUpdateCallback(lvarId);
+	}
+}
+void fsuipcw_flagLvarForUpdateCallbackByName(const char* lvarName) {
+	if (wasmPtr) {
+		wasmPtr->flagLvarForUpdateCallback(lvarName);
+	}
 }

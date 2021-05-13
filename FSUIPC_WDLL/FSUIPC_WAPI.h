@@ -11,6 +11,7 @@
 
 extern "C" FSUIPC_WAPI_API void fsuipcw_init(HWND hWnd, int startEventNo, void (*loggerFunction)(const char* logString));
 extern "C" FSUIPC_WAPI_API void fsuipcw_start();
+extern "C" FSUIPC_WAPI_API bool fsuipcw_isRunning();
 extern "C" FSUIPC_WAPI_API void fsuipcw_end();
 extern "C" FSUIPC_WAPI_API void fsuipcw_createAircraftLvarFile();
 extern "C" FSUIPC_WAPI_API void fsuipcw_reload();
@@ -34,6 +35,12 @@ extern "C" FSUIPC_WAPI_API void fsuipcw_executeCalclatorCode(const char* code);
 extern "C" FSUIPC_WAPI_API int fsuipcw_getLvarIdFromName(const char* lvarName);
 extern "C" FSUIPC_WAPI_API void fsuipcw_getLvarNameFromId(int id, char* name);
 extern "C" FSUIPC_WAPI_API bool fsuipcw_createLvar(const char* lvarName, DWORD value);
+
+extern "C" FSUIPC_WAPI_API void fsuipcw_registerUpdateCallback(void (*callbackFunction)(void));
+extern "C" FSUIPC_WAPI_API void fsuipcw_registerLvarUpdateCallbackById(void (*callbackFunction)(int id[], double newValue[]));
+extern "C" FSUIPC_WAPI_API void fsuipcw_registerLvarUpdateCallbackByName(void (*callbackFunction)(const char* lvarName[], double newValue[]));
+extern "C" FSUIPC_WAPI_API void fsuipcw_flagLvarForUpdateCallbackById(int lvarId);
+extern "C" FSUIPC_WAPI_API void fsuipcw_flagLvarForUpdateCallbackByName(const char* lvarName);
 
 extern "C" FSUIPC_WAPI_API  void CALLBACK fsuipcw_MyDispatchProc(SIMCONNECT_RECV* pData, DWORD cbData, void* pContext);
 extern "C" FSUIPC_WAPI_API  VOID CALLBACK fsuipcw_StaticConfigTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
