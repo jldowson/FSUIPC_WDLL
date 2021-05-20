@@ -171,7 +171,7 @@ void fsuipcw_getLvarNameFromId(int id, char* name) {
 	}
 }
 
-bool fsuipcw_createLvar(const char* lvarName, DWORD value) {
+bool fsuipcw_createLvar(const char* lvarName, double value) {
 	if (wasmPtr) {
 		return wasmPtr->createLvar(lvarName, value);
 	}

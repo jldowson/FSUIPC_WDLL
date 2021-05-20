@@ -34,7 +34,7 @@ extern "C" FSUIPC_WAPI_API void fsuipcw_getHvarList(void (*receiveFunction)(int,
 extern "C" FSUIPC_WAPI_API void fsuipcw_executeCalclatorCode(const char* code);
 extern "C" FSUIPC_WAPI_API int fsuipcw_getLvarIdFromName(const char* lvarName);
 extern "C" FSUIPC_WAPI_API void fsuipcw_getLvarNameFromId(int id, char* name);
-extern "C" FSUIPC_WAPI_API bool fsuipcw_createLvar(const char* lvarName, DWORD value);
+extern "C" FSUIPC_WAPI_API bool fsuipcw_createLvar(const char* lvarName, double value);
 
 extern "C" FSUIPC_WAPI_API void fsuipcw_registerUpdateCallback(void (*callbackFunction)(void));
 extern "C" FSUIPC_WAPI_API void fsuipcw_registerLvarUpdateCallbackById(void (*callbackFunction)(int id[], double newValue[]));
