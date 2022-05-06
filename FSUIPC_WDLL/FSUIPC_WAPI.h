@@ -43,5 +43,3 @@ extern "C" FSUIPC_WAPI_API void fsuipcw_flagLvarForUpdateCallbackById(int lvarId
 extern "C" FSUIPC_WAPI_API void fsuipcw_flagLvarForUpdateCallbackByName(const char* lvarName);
 
 extern "C" FSUIPC_WAPI_API  void CALLBACK fsuipcw_MyDispatchProc(SIMCONNECT_RECV* pData, DWORD cbData, void* pContext);
-extern "C" FSUIPC_WAPI_API  VOID CALLBACK fsuipcw_StaticConfigTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
-extern "C" FSUIPC_WAPI_API  VOID CALLBACK fsuipcw_StaticRequestDataTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime);
