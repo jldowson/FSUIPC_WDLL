@@ -9,7 +9,7 @@
 #define FSUIPC_WAPI_API __declspec(dllimport)
 #endif
 
-extern "C" FSUIPC_WAPI_API void fsuipcw_init(HWND hWnd, int startEventNo, void (*loggerFunction)(const char* logString));
+extern "C" FSUIPC_WAPI_API void fsuipcw_init(void (*loggerFunction)(const char* logString));
 extern "C" FSUIPC_WAPI_API void fsuipcw_start();
 extern "C" FSUIPC_WAPI_API bool fsuipcw_isRunning();
 extern "C" FSUIPC_WAPI_API void fsuipcw_end();

@@ -4,10 +4,9 @@
 WASMIF* wasmPtr = nullptr;
 
 
-void fsuipcw_init(HWND hWnd, int startEventNo, void (*loggerFunction)(const char* logString)) {
+void fsuipcw_init(void (*loggerFunction)(const char* logString)) {
 	if (!wasmPtr) {
-		if (startEventNo < 0x11000 || startEventNo > 0x1FFF0) startEventNo = EVENT_START_NO;
-		wasmPtr = WASMIF::GetInstance(hWnd, startEventNo, loggerFunction);
+		wasmPtr = WASMIF::GetInstance(loggerFunction);
 	}
 }
 
