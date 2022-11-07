@@ -137,7 +137,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(MSFS_SDK)\SimConnect SDK\lib\static;FSUIPC_WAPI/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SimConnect_debug.lib;FSUIPC_WAPI.lib;Ws2_32.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SimConnect_debug.lib;FSUIPC_WAPI_debug.lib;Ws2_32.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="FSUIPC_WAPI\lib\FSUIPC_WAPI.lib" />
+    <Library Include="FSUIPC_WAPI\lib\FSUIPC_WAPI_debug.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
